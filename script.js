@@ -1,62 +1,59 @@
 let botaoAdicionar = document.getElementById('botaoAdicionar');
 
-class Filme{
-    constructor(titulo,diretor,ano){
+class Filme {
+    constructor(titulo, diretor, ano) {
         this.titulo = titulo;
         this.diretor = diretor;
         this.ano = ano;
-    
+
     }
-    getTitulo(){
+    getTitulo() {
         return this.titulo;
     }
-    getDiretor(){
+    getDiretor() {
         return this.diretor;
     }
-    getAno(){
+    getAno() {
         return this.ano;
     }
-    setTitulo(novoTitulo){
+    setTitulo(novoTitulo) {
         this.titulo = novoTitulo;
     }
-    setDiretor(novoDiretor){
+    setDiretor(novoDiretor) {
         this.diretor = novoDiretor;
     }
-    setAno(novoAno){
+    setAno(novoAno) {
         this.ano = novoAno;
     }
-    mostrarInformacoes(){
-            const novoParagrafo = document.createElement("p");
-            novoParagrafo.innerHTML =` ${this.titulo} - ${this.diretor} (${this.ano})`;
-            return novoParagrafo;
+    mostrarInformacoes() {
+        const novoParagrafo = document.createElement("p");
+        novoParagrafo.innerHTML = ` ${this.titulo} - ${this.diretor} (${this.ano})`;
+        return novoParagrafo;
     }
 }
-function apertarButton(){
+function apertarButton() {
 
     let titulo = document.getElementById('titulo').value;
     let diretor = document.getElementById('diretor').value;
     let ano = document.getElementById('ano').value;
     let listaFilmes = document.getElementById('listaFilmes');
-
-
-    switch (true)
-    {
-    case titulo=== '':
+    if (titulo === '') {
         window.alert('Preencha o campo de título');
-    case diretor=== '':
-        window.alert('Preencha o campo diretor');   
-    case ano === '':
+    }
+    if (diretor === '') {
+        window.alert('Preencha o campo diretor');
+    }
+    if (ano === '') {
         window.alert('Preencha o campo ano de lançamento');
     }
-    
-    if (titulo !== '' && diretor !== '' && ano !== '')
-        {
-            let filme = new Filme(titulo,diretor,ano);
-            let filmeInfo = filme.mostrarInformacoes();
-            listaFilmes.appendChild(filmeInfo);
-            titulo = document.getElementById('titulo').value =  '';
-            diretor = document.getElementById('diretor').value = '';
-            ano = document.getElementById('ano').value = '';
-        }
+
+    if (titulo !== '' && diretor !== '' && ano !== '') {
+        let filme = new Filme(titulo, diretor, ano);
+        let filmeInfo = filme.mostrarInformacoes();
+        listaFilmes.appendChild(filmeInfo);
+        titulo = document.getElementById('titulo').value = '';
+        diretor = document.getElementById('diretor').value = '';
+        ano = document.getElementById('ano').value = '';
+    }
 }
-botaoAdicionar.addEventListener('click',apertarButton);
+botaoAdicionar.addEventListener('click', apertarButton);
